@@ -436,7 +436,7 @@
                     </div>
                 </div>
                 
-                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
                     <div class="bg-purple-50 p-6 rounded-lg border border-purple-100">
                         <div class="flex items-center mb-3">
                             <div class="bg-purple-100 p-2 rounded-full mr-3">
@@ -447,7 +447,7 @@
                         <ul class="text-left text-gray-600 text-sm space-y-2">
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-purple-500 mt-1 mr-2 text-xs"></i>
-                                <span>20 câu hỏi trắc nghiệm</span>
+                                <span>24 câu hỏi trắc nghiệm</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-purple-500 mt-1 mr-2 text-xs"></i>
@@ -470,7 +470,7 @@
                         <ul class="text-left text-gray-600 text-sm space-y-2">
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-amber-500 mt-1 mr-2 text-xs"></i>
-                                <span>10 câu hỏi Đúng/Sai</span>
+                                <span>4 câu hỏi Đúng/Sai</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-amber-500 mt-1 mr-2 text-xs"></i>
@@ -479,29 +479,6 @@
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-amber-500 mt-1 mr-2 text-xs"></i>
                                 <span>Điểm từ 0.1 đến 1 điểm</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
-                        <div class="flex items-center mb-3">
-                            <div class="bg-blue-100 p-2 rounded-full mr-3">
-                                <i class="fas fa-pen text-blue-600"></i>
-                            </div>
-                            <h3 class="font-bold text-gray-800">Phần 3: Trả lời ngắn</h3>
-                        </div>
-                        <ul class="text-left text-gray-600 text-sm space-y-2">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 text-xs"></i>
-                                <span>5 câu hỏi trả lời ngắn</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 text-xs"></i>
-                                <span>Mỗi câu 0.25 điểm</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 text-xs"></i>
-                                <span>Điền đáp án ngắn gọn</span>
                             </li>
                         </ul>
                     </div>
@@ -601,20 +578,14 @@
             
             <!-- Phần 1: Trắc nghiệm -->
             <div class="exam-card p-6 md:p-8 mb-8">
-                <div class="part-indicator">PHẦN 1: TRẮC NGHIỆM (5.0 điểm)</div>
+                <div class="part-indicator">PHẦN 1: TRẮC NGHIỆM (6.0 điểm)</div>
                 <div id="multiple-choice-questions" class="space-y-4"></div>
             </div>
             
             <!-- Phần 2: Đúng/Sai -->
             <div class="exam-card p-6 md:p-8 mb-8">
-                <div class="part-indicator">PHẦN 2: ĐÚNG/SAI (5.0 điểm)</div>
+                <div class="part-indicator">PHẦN 2: ĐÚNG/SAI (4.0 điểm)</div>
                 <div id="true-false-questions" class="space-y-6"></div>
-            </div>
-            
-            <!-- Phần 3: Trả lời ngắn -->
-            <div class="exam-card p-6 md:p-8">
-                <div class="part-indicator">PHẦN 3: TRẢ LỜI NGẮN (1.25 điểm)</div>
-                <div id="short-answer-questions" class="space-y-4"></div>
             </div>
             
             <div class="mt-8 flex justify-center">
@@ -654,20 +625,14 @@
                 
                 <!-- Kết quả phần 1 -->
                 <div id="part1-results" class="mb-8">
-                    <h4 class="font-bold text-lg mb-4 text-gray-800">Phần 1: Trắc nghiệm (5.0 điểm)</h4>
+                    <h4 class="font-bold text-lg mb-4 text-gray-800">Phần 1: Trắc nghiệm (6.0 điểm)</h4>
                     <div id="part1-feedback" class="space-y-4"></div>
                 </div>
                 
                 <!-- Kết quả phần 2 -->
                 <div id="part2-results" class="mb-8">
-                    <h4 class="font-bold text-lg mb-4 text-gray-800">Phần 2: Đúng/Sai (5.0 điểm)</h4>
+                    <h4 class="font-bold text-lg mb-4 text-gray-800">Phần 2: Đúng/Sai (4.0 điểm)</h4>
                     <div id="part2-feedback" class="space-y-4"></div>
-                </div>
-                
-                <!-- Kết quả phần 3 -->
-                <div id="part3-results">
-                    <h4 class="font-bold text-lg mb-4 text-gray-800">Phần 3: Trả lời ngắn (1.25 điểm)</h4>
-                    <div id="part3-feedback" class="space-y-4"></div>
                 </div>
             </div>
             
@@ -1283,14 +1248,14 @@
             const prompt = `
                 Bạn hãy tạo một đề thi Lịch Sử THPT Quốc Gia theo cấu trúc sau:
                 
-                PHẦN 1: TRẮC NGHIỆM (5.0 điểm)
-                - 20 câu hỏi trắc nghiệm khách quan, mỗi câu có 4 phương án lựa chọn (A, B, C, D)
+                PHẦN 1: TRẮC NGHIỆM (6.0 điểm)
+                - 24 câu hỏi trắc nghiệm khách quan, mỗi câu có 4 phương án lựa chọn (A, B, C, D)
                 - Mỗi câu trả lời đúng được 0.25 điểm
                 - Nội dung bao quát chương trình Lịch Sử lớp 12
                 - Câu hỏi về các sự kiện, nhân vật, mốc thời gian quan trọng trong lịch sử Việt Nam và thế giới
                 
-                PHẦN 2: ĐÚNG/SAI (5.0 điểm)
-                - 10 câu hỏi, mỗi câu có 4 ý nhỏ
+                PHẦN 2: ĐÚNG/SAI (4.0 điểm)
+                - 4 câu hỏi, mỗi câu có 4 ý nhỏ
                 - Thí sinh chọn Đúng/Sai cho từng ý
                 - Thang điểm:
                   + Đúng 1 ý: 0.1 điểm
@@ -1298,11 +1263,6 @@
                   + Đúng 3 ý: 0.5 điểm
                   + Đúng cả 4 ý: 1 điểm
                 - Nội dung về các nhận định, đánh giá trong lịch sử
-                
-                PHẦN 3: TRẢ LỜI NGẮN (1.25 điểm)
-                - 5 câu hỏi yêu cầu trả lời ngắn gọn
-                - Mỗi câu trả lời đúng được 0.25 điểm
-                - Câu hỏi về các khái niệm, thuật ngữ lịch sử
                 
                 Yêu cầu:
                 - Đề thi phải bám sát cấu trúc và mức độ đề thi thật
@@ -1332,14 +1292,6 @@
                                 },
                                 ...
                             ]
-                        },
-                        ...
-                    ],
-                    "part3": [
-                        {
-                            "number": 1,
-                            "question": "Nội dung câu hỏi",
-                            "correctAnswer": "Đáp án đúng"
                         },
                         ...
                     ]
@@ -1432,24 +1384,6 @@
                 `;
                 part2Container.appendChild(questionElement);
             });
-            
-            // Phần 3: Trả lời ngắn
-            const part3Container = document.getElementById('short-answer-questions');
-            part3Container.innerHTML = '';
-            
-            data.part3.forEach(question => {
-                const questionElement = document.createElement('div');
-                questionElement.className = 'question-card p-5';
-                
-                questionElement.innerHTML = `
-                    <div class="flex items-start mb-3">
-                        <span class="question-number">${question.number}</span>
-                        <p class="font-bold text-gray-700">${question.question}</p>
-                    </div>
-                    <input type="text" id="part3-q${question.number}" class="short-answer-input" placeholder="Nhập câu trả lời...">
-                `;
-                part3Container.appendChild(questionElement);
-            });
         }
         
         // Hàm chọn phương án trắc nghiệm
@@ -1532,8 +1466,7 @@
         function collectAnswers() {
             userAnswers = {
                 part1: {},
-                part2: {},
-                part3: {}
+                part2: {}
             };
             
             // Thu thập câu trả lời phần 1 (trắc nghiệm)
@@ -1558,12 +1491,6 @@
                     }
                 });
             });
-            
-            // Thu thập câu trả lời phần 3 (trả lời ngắn)
-            examData.part3.forEach(question => {
-                const answerInput = document.getElementById(`part3-q${question.number}`);
-                userAnswers.part3[question.number] = answerInput ? answerInput.value.trim() : '';
-            });
         }
         
         // Chấm điểm bài thi bằng AI
@@ -1587,7 +1514,7 @@
                 Cách tính điểm:
                 * Phần 1 (Trắc nghiệm):
                 - Mỗi câu đúng: 0.25 điểm
-                - Tổng điểm tối đa: 5.0 điểm
+                - Tổng điểm tối đa: 6.0 điểm
                 
                 * Phần 2 (Đúng/Sai):
                 - Mỗi câu có 4 ý:
@@ -1595,16 +1522,12 @@
                   + Đúng 2 ý: 0.25 điểm
                   + Đúng 3 ý: 0.5 điểm
                   + Đúng cả 4 ý: 1 điểm
-                - Tổng điểm tối đa: 5.0 điểm
-                
-                * Phần 3 (Trả lời ngắn):
-                - Mỗi câu đúng: 0.25 điểm
-                - Tổng điểm tối đa: 1.25 điểm
+                - Tổng điểm tối đa: 4.0 điểm
                 
                 Trả lời bằng JSON theo định dạng sau:
                 {
                     "part1": {
-                        "totalScore": 5.0,
+                        "totalScore": 6.0,
                         "questions": [
                             {
                                 "number": 1,
@@ -1615,23 +1538,12 @@
                         ]
                     },
                     "part2": {
-                        "totalScore": 5.0,
+                        "totalScore": 4.0,
                         "questions": [
                             {
                                 "number": 1,
                                 "correctStatements": 3,
                                 "score": 0.5,
-                                "feedback": "Nhận xét..."
-                            },
-                            ...
-                        ]
-                    },
-                    "part3": {
-                        "totalScore": 1.25,
-                        "questions": [
-                            {
-                                "number": 1,
-                                "isCorrect": true,
                                 "feedback": "Nhận xét..."
                             },
                             ...
@@ -1751,29 +1663,6 @@
                 `;
                 part2Feedback.appendChild(questionElement);
             });
-            
-            // Kết quả phần 3
-            const part3Feedback = document.getElementById('part3-feedback');
-            part3Feedback.innerHTML = '';
-            
-            result.part3.questions.forEach(question => {
-                const questionElement = document.createElement('div');
-                
-                // Xác định class kết quả
-                let resultClass = question.isCorrect ? "result-good" : "result-low";
-                
-                questionElement.className = `result-card ${resultClass} mb-4`;
-                questionElement.innerHTML = `
-                    <div class="result-header">
-                        <span>Câu ${question.number}</span>
-                        <span class="font-bold">${question.isCorrect ? '0.25' : '0.00'} điểm</span>
-                    </div>
-                    <div class="result-body">
-                        <p class="mb-2">${question.feedback}</p>
-                    </div>
-                `;
-                part3Feedback.appendChild(questionElement);
-            });
         }
         
         // Reset bài thi
@@ -1791,10 +1680,6 @@
             document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
                 checkbox.checked = false;
                 checkbox.parentElement.classList.remove('selected');
-            });
-            
-            document.querySelectorAll('input[type="text"]').forEach(input => {
-                input.value = '';
             });
         }
     </script>
