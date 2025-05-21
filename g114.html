@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thu Thập Dữ Liệu văn Học</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f9f4e6;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e0d6c2;
+        }
+        .progress-container {
+            margin: 20px 0;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #8b6b47;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        button {
+            background-color: #8b6b47;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .log {
+            background-color: #2a2118;
+            color: #e0d6c2;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            height: 200px;
+            overflow-y: auto;
+            margin-top: 20px;
+            border: 1px solid #5d4c3a;
+        }
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 3px 0;
+            border-bottom: 1px dotted #5d4c3a;
+        }
+        .success {
+            color: #a5c261;
+        }
+        .error {
+            color: #ff6b6b;
+        }
+        h1, h2 {
+            color: #5d4c3a;
+        }
+        .checkbox-group {
+            margin: 15px 0;
+        }
+        .checkbox-item {
+            margin: 8px 0;
+        }
+        label {
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hệ Thống Thu Thập Dữ Liệu văn Học</h1>
+    <p>Công cụ này thu thập dữ liệu từ các nguồn văn học uy tín và biên soạn thành bộ dữ liệu có thể tải xuống.</p>
+    
+    <div class="container">
+        <h2>Quá Trình Thu Thập Dữ Liệu</h2>
+        <p>Chọn các thể loại văn học bạn muốn bao gồm:</p>
+        
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <input type="checkbox" id="tho" checked>
+                <label for="tho">Thơ ca Việt Nam</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="truyen" checked>
+                <label for="truyen">Truyện ngắn - Tiểu thuyết</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="kich" checked>
+                <label for="kich">Kịch bản văn học</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="phebinh" checked>
+                <label for="phebinh">Phê bình văn học</label>
+            </div>
+            <div class="checkbox-item">
+                <input type="checkbox" id="danhngon" checked>
+                <label for="danhngon">Danh ngôn - Tục ngữ</label>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <button id="startBtn" onclick="startCollection()">Bắt Đầu Thu Thập</button>
+        <button id="downloadBtn" onclick="downloadData()" disabled>Tải Xuống model.safetensors</button>
+        
+        <h3>Nhật Ký Quá Trình:</h3>
+        <div class="log" id="processLog"></div>
+    </div>
+
+    <script>
+        // URL đến file van.data đã upload sẵn trên GitHub
+        // Thay thế bằng đường dẫn thực tế đến file của bạn
+        const DATA_FILE_URL = 'https://raw.githubusercontent.com/hmtuan002/TLS/main/model.safetensors';
+        
+        function logMessage(message, type = 'info') {
+            const logElement = document.getElementById('processLog');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logElement.appendChild(entry);
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+        
+        function updateProgress(percent) {
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = `${percent}%`;
+        }
+        
+        function simulateProcess() {
+            return new Promise((resolve) => {
+                let progress = 0;
+                const steps = [
+                    "Kết nối đến thư viện văn học số...",
+                    "Đang thu thập dữ liệu thơ ca...",
+                    "Phân tích các tác phẩm thơ từ thế kỷ 10-19...",
+                    "Tải xuống bộ sưu tập truyện ngắn...",
+                    "Xử lý dữ liệu tiểu thuyết hiện đại...",
+                    "Trích xuất kịch bản văn học...",
+                    "Thu thập bài phê bình từ các tạp chí...",
+                    "Biên soạn danh ngôn, tục ngữ...",
+                    "Kiểm tra tính nhất quán của dữ liệu...",
+                    "Chuẩn hóa định dạng văn bản...",
+                    "Mã hóa dữ liệu thành file nhị phân...",
+                    "Đang tạo file data..."
+                ];
+                
+                const interval = setInterval(() => {
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        resolve();
+                        return;
+                    }
+                    
+                    progress += Math.random() * 8 + 4;
+                    if (progress > 100) progress = 100;
+                    updateProgress(progress);
+                    
+                    // Hiển thị các bước ngẫu nhiên
+                    if (progress % 15 < 5 && steps.length > 0) {
+                        const stepIndex = Math.floor(Math.random() * steps.length);
+                        logMessage(steps[stepIndex]);
+                        steps.splice(stepIndex, 1);
+                    }
+                }, 600);
+            });
+        }
+        
+        async function startCollection() {
+            const startBtn = document.getElementById('startBtn');
+            startBtn.disabled = true;
+            
+            logMessage("Bắt đầu quá trình thu thập dữ liệu văn học...");
+            logMessage("Kiểm tra các thể loại đã chọn...");
+            
+            await simulateProcess();
+            
+            logMessage("Quá trình thu thập hoàn tất!", "success");
+            logMessage("File data đã sẵn sàng để tải xuống.", "success");
+            
+            document.getElementById('downloadBtn').disabled = false;
+        }
+        
+        function downloadData() {
+            logMessage("Đang chuẩn bị tải xuống file data...");
+            
+            // Tạo phần tử a ẩn để kích hoạt tải xuống
+            const a = document.createElement('a');
+            a.href = DATA_FILE_URL;
+            a.download = 'model.safetensors';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            logMessage("Tải xuống hoàn thành!", "success");
+            logMessage("Bạn có thể mở file bằng phần mềm phân tích văn học chuyên dụng.", "success");
+        }
+    </script>
+</body>
+</html>
